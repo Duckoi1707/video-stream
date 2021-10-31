@@ -62,10 +62,10 @@ async def vplay(client, m: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="✨ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
+                    text="Nhóm Hỗ Trợ", url=f"https://t.me/{GROUP_SUPPORT}"
                 ),
                 InlineKeyboardButton(
-                    text="🌻 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    text="Kênh Hỗ Trợ", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
@@ -75,7 +75,7 @@ async def vplay(client, m: Message):
     chat_id = m.chat.id
     if replied:
         if replied.video or replied.document:
-            loser = await replied.reply("📥 **downloading video...**")
+            loser = await replied.reply("📥 **tải xuống video...**")
             dl = await replied.download()
             link = replied.link
             if len(m.command) < 2:
