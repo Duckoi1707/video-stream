@@ -56,10 +56,10 @@ async def play(_, m: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="✨ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
+                    text="Nhóm Hỗ Trợ", url=f"https://t.me/{GROUP_SUPPORT}"
                 ),
                 InlineKeyboardButton(
-                    text="🌻 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    text="Kênh Hỗ Trợ", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
