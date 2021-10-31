@@ -55,8 +55,8 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(command(["vplay", f"vplay@{BOT_USERNAME}"]) & other_filters)
-async def vplay(client, m: Message):
+@Client.on_message(command(["batv", f"batv@{BOT_USERNAME}"]) & other_filters)
+async def batv(client, m: Message):
 
     keyboard = InlineKeyboardMarkup(
         [
@@ -149,7 +149,7 @@ async def vplay(client, m: Message):
                             await loser.delete()
                             await m.reply_photo(
                                 photo=f"{IMG_1}",
-                                caption=f"💡 **Track added to the queue**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {m.from_user.mention()}\n🔢 **At position »** `{pos}`",
+                                caption=f"💡 **Bản nhạc đã được thêm vào hàng đợi**\n\n🏷 **Tên:** [{songname}]({url})\n💭 **Trò chuyện:** `{chat_id}`\n🎧 **Thực hiện bởi:** {m.from_user.mention()}\n🔢 **Tại vị trí »** `{pos}`",
                                 reply_markup=keyboard,
                             )
                         else:
@@ -163,7 +163,7 @@ async def vplay(client, m: Message):
                                 await loser.delete()
                                 await m.reply_photo(
                                     photo=f"{IMG_2}",
-                                    caption=f"💡 **video streaming started.**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {m.from_user.mention()}",
+                                    caption=f"💡 **bắt đầu phát trực tuyến video.**\n\n🏷 **Tên:** [{songname}]({url})\n💭 **Trò chuyện:** `{chat_id}`\n💡 **Trạng thái:** `Playing`\n🎧 **Yêu cầu bởi:** {m.from_user.mention()}",
                                     reply_markup=keyboard,
                                 )
                             except Exception as ep:
