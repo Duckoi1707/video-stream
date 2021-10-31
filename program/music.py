@@ -49,8 +49,8 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
-async def play(_, m: Message):
+@Client.on_message(command(["bat", f"bat@{BOT_USERNAME}"]) & other_filters)
+async def bat(_, m: Message):
 
     keyboard = InlineKeyboardMarkup(
         [
