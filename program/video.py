@@ -55,17 +55,17 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(command(["vplay", f"vplay@{BOT_USERNAME}"]) & other_filters)
-async def vplay(client, m: Message):
+@Client.on_message(command(["batv", f"batv@{BOT_USERNAME}"]) & other_filters)
+async def batv(client, m: Message):
 
     keyboard = InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
-                    text="✨ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
+                    text="Nhóm Hỗ Trợ", url=f"https://t.me/{GROUP_SUPPORT}"
                 ),
                 InlineKeyboardButton(
-                    text="🌻 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    text="Kênh Hỗ Trợ", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
@@ -100,7 +100,7 @@ async def vplay(client, m: Message):
                 await loser.delete()
                 await m.reply_photo(
                     photo=f"{IMG_1}",
-                    caption=f"💡 **Track added to the queue**\n\n🏷 **Name:** [{songname}]({link})\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {m.from_user.mention()}\n🔢 **At position »** `{pos}`",
+                    caption=f"💡 **Bài hát được thêm vào**\n\n🏷 **Tên :** [{songname}]({link})\n💭 **Trò chuyện:** `{chat_id}`\n🎧 **Yêu cầu bởi:** {m.from_user.mention()}\n🔢 **Tại vị trí »** `{pos}`",
                     reply_markup=keyboard,
                 )
             else:
@@ -119,7 +119,7 @@ async def vplay(client, m: Message):
                 await loser.delete()
                 await m.reply_photo(
                     photo=f"{IMG_2}",
-                    caption=f"💡 **video streaming started.**\n\n🏷 **Name:** [{songname}]({link})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {m.from_user.mention()}",
+                    caption=f"💡 **bắt đầu phát trực tuyến video.**\n\n🏷 **Tên:** [{songname}]({link})\n💭 **Trò chuyện:** `{chat_id}`\n💡 **Trạng thái:** `Playing`\n🎧 **Yêu cầu bởi:** {m.from_user.mention()}",
                     reply_markup=keyboard,
                 )
         else:
@@ -128,13 +128,13 @@ async def vplay(client, m: Message):
                     "» reply to an **video file** or **give something to search.**"
                 )
             else:
-                loser = await m.reply("🔎 **searching...**")
+                loser = await m.reply("🔎 **đang tìm kiếm...**")
                 query = m.text.split(None, 1)[1]
                 search = ytsearch(query)
                 Q = 720
                 amaze = HighQualityVideo()
                 if search == 0:
-                    await loser.edit("❌ **no results found.**")
+                    await loser.edit("❌ **không tim được kêt quả.**")
                 else:
                     songname = search[0]
                     url = search[1]
@@ -149,7 +149,13 @@ async def vplay(client, m: Message):
                             await loser.delete()
                             await m.reply_photo(
                                 photo=f"{IMG_1}",
-                                caption=f"💡 **Track added to the queue**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {m.from_user.mention()}\n🔢 **At position »** `{pos}`",
+                                caption=f"💡 ** thêm vào danh sách phát**\n\n🏷 **Tên:** [{songname}]({url})\n💭 **Trò chuyện:** `{chat_id}`\n🎧 **Yêu cầu bởi:** {m.from_user.mention()}\n🔢 **Tại vị trí »** `{pos}`",
+
+
+
+
+
+
                                 reply_markup=keyboard,
                             )
                         else:
@@ -163,7 +169,7 @@ async def vplay(client, m: Message):
                                 await loser.delete()
                                 await m.reply_photo(
                                     photo=f"{IMG_2}",
-                                    caption=f"💡 **video streaming started.**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {m.from_user.mention()}",
+                                    caption=f"💡 **bắt đầu phát trực tuyến video.**\n\n🏷 **Tên:** [{songname}]({url})\n💭 **Trò chuyện:** `{chat_id}`\n💡 **Trạng thái:** `Playing`\n🎧 **Yêu cầu bởi:** {m.from_user.mention()}",
                                     reply_markup=keyboard,
                                 )
                             except Exception as ep:
@@ -175,7 +181,7 @@ async def vplay(client, m: Message):
                 "» reply to an **video file** or **give something to search.**"
             )
         else:
-            loser = await m.reply("🔎 **searching...**")
+            loser = await m.reply("🔎 **đang tìm kiếm...**")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             Q = 720
