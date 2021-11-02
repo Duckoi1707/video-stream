@@ -55,17 +55,17 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(command(["vplay", f"vplay@{BOT_USERNAME}"]) & other_filters)
-async def vplay(client, m: Message):
+@Client.on_message(command(["batv", f"batv@{BOT_USERNAME}"]) & other_filters)
+async def batv(client, m: Message):
 
     keyboard = InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
-                    text="• Mᴇɴᴜ", callback_data="cbmenu"
+                    text="Tùy Chỉnh", callback_data="cbmenu"
                 ),
                 InlineKeyboardButton(
-                    text="• Cʟᴏsᴇ", callback_data="cls"
+                    text="Tạm Ẩn 🗳️", callback_data="cls"
                 ),
             ]
         ]
