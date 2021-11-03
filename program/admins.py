@@ -38,7 +38,7 @@ async def update_admin(client, message):
     )
 
 
-@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "vskip"]) & other_filters)
+@Client.on_message(command(["boqua", f"boqua@{BOT_USERNAME}", "skip"]) & other_filters)
 @authorized_users_only
 async def skip(client, m: Message):
 
@@ -46,10 +46,10 @@ async def skip(client, m: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="• Mᴇɴᴜ", callback_data="cbmenu"
+                    text="Tùy Chỉnh", callback_data="cbmenu"
                 ),
                 InlineKeyboardButton(
-                    text="• Cʟᴏsᴇ", callback_data="cls"
+                    text="Tạm Ẩn 🗳️", callback_data="cls"
                 ),
             ]
         ]
@@ -87,7 +87,7 @@ async def skip(client, m: Message):
 
 
 @Client.on_message(
-    command(["stop", f"stop@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vstop"])
+    command(["tat", f"tat@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vstop"])
     & other_filters
 )
 @authorized_users_only
@@ -97,7 +97,7 @@ async def stop(client, m: Message):
         try:
             await call_py.leave_group_call(chat_id)
             clear_queue(chat_id)
-            await m.reply("✅ **streaming has ended.**")
+            await m.reply("✅ **Bài Hát Đã Được Dừng\n Đang Sao Kê Giữ Liệu 🗳️.**")
         except Exception as e:
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
