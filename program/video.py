@@ -204,7 +204,7 @@ async def batv(client, m: Message):
                         await loser.delete()
                         await m.reply_photo(
                             photo=f"{IMG_1}",
-                            caption=f"💡 **Track added to the queue**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {m.from_user.mention()}\n🔢 **At position »** `{pos}`",
+                            caption=f"💡 **Bài Hát Đã Được Thêm Vào Hàng Đợi**\n\n🏷 **Tên Bài Nhạc:** [{songname}]({url})\n💭 **ID Nhóm Thực Hiện:** `{chat_id}`\n🎧 **Khởi Chạy Bởi:** {m.from_user.mention()}\n🔢 **Hàng Đợi S »** `{pos}`",
                             reply_markup=keyboard,
                         )
                     else:
@@ -222,7 +222,7 @@ async def batv(client, m: Message):
                             await loser.delete()
                             await m.reply_photo(
                                 photo=f"{IMG_2}",
-                                caption=f"💡 **video streaming started.**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {m.from_user.mention()}",
+                                caption=f"💡 **Đã Bắt Đầu Chạy.**\n\n🏷 **Tên Bài Hát:** [{songname}]({url})\n💭 **ID Nhóm Chạy:** `{chat_id}`\n💡 **Trangj Thái:** `Đang Chạy`\n🎧 **Thực Hiện Bởi:** {m.from_user.mention()}",
                                 reply_markup=keyboard,
                             )
                         except Exception as ep:
