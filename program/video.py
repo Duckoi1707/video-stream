@@ -75,7 +75,7 @@ async def batv(client, m: Message):
     chat_id = m.chat.id
     if replied:
         if replied.video or replied.document:
-            loser = await replied.reply("📥 **downloading video...**")
+            loser = await replied.reply("📥 **tải xuống video...**")
             dl = await replied.download()
             link = replied.link
             if len(m.command) < 2:
@@ -155,7 +155,7 @@ async def batv(client, m: Message):
                             await loser.delete()
                             await m.reply_photo(
                                 photo=f"{IMG_1}",
-                                caption=f"💡 **Track added to the queue**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {m.from_user.mention()}\n🔢 **At position »** `{pos}`",
+                                caption=f"💡 **Bài hát được thêm vào hàng chờ**\n\n🏷 **Tên:** [{songname}]({url})\n💭 **Trò chuyện:** `{chat_id}`\n🎧 **Yêu cầu bởi:** {m.from_user.mention()}\n🔢 **Tại vị trí »** `{pos}`",
                                 reply_markup=keyboard,
                             )
                         else:
@@ -173,7 +173,7 @@ async def batv(client, m: Message):
                                 await loser.delete()
                                 await m.reply_photo(
                                     photo=f"{IMG_2}",
-                                    caption=f"💡 **video streaming started.**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {m.from_user.mention()}",
+                                    caption=f"💡 **bắt đầu phát trực tuyến video.**\n\n🏷 **Tên:** [{songname}]({url})\n💭 **Trò chuyện:** `{chat_id}`\n💡 **Trạng thái:** `Playing`\n🎧 **Yêu cầu bởi:** {m.from_user.mention()}",
                                     reply_markup=keyboard,
                                 )
                             except Exception as ep:
@@ -185,7 +185,7 @@ async def batv(client, m: Message):
                 "» reply to an **video file** or **give something to search.**"
             )
         else:
-            loser = await m.reply("🔎 **searching...**")
+            loser = await m.reply("🔎 **đang tìm kiếm...**")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             Q = 720
@@ -284,7 +284,7 @@ async def vstream(client, m: Message):
                 await loser.delete()
                 await m.reply_photo(
                     photo=f"{IMG_1}",
-                    caption=f"💡 **Track added to the queue**\n\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {m.from_user.mention()}\n🔢 **At position »** `{pos}`",
+                    caption=f"💡 **Bài hát được thêm vào hàng chờ**\n\n💭 **Trò chuyện:** `{chat_id}`\n🎧 **Yêu cầu bởi:** {m.from_user.mention()}\n🔢 **Tại vị trí »** `{pos}`",
                     reply_markup=keyboard,
                 )
             else:
@@ -308,7 +308,7 @@ async def vstream(client, m: Message):
                     await loser.delete()
                     await m.reply_photo(
                         photo=f"{IMG_2}",
-                        caption=f"💡 **[Live stream video]({link}) started.**\n\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {m.from_user.mention()}",
+                        caption=f"💡 **[Video phát trực tiếp]({link}) started.**\n\n💭 **Trò chuyện:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {m.from_user.mention()}",
                         reply_markup=keyboard,
                     )
                 except Exception as ep:
