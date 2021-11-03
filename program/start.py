@@ -106,7 +106,7 @@ async def alive(client: Client, message: Message):
         ]
     )
 
-    thongtin = f"**Xin Chào {message.from_user.mention()}, i'm {BOT_NAME}**\n\n⚡ Trạng Thái Bot Đang Hoạt Động\n🍀 Người Sáng Lập: [{ALIVE_NAME}](https://t.me/{OWNER_NAME})\n✨ Phiên Bản Bot: `v{__version__}`\n🍀 Pyrogram Phiên Bản: `{pyrover}`\n✨ Python Phiên Bản: `{__python_version__}`\n🍀 PyTgCalls Phiên Bản: `{pytover.__version__}`\n✨ Thời Gian Bot Hoạt Động: `{uptime}`\n\n**Cảm Ơn Bạn Đã Sử Dụng Phiên Bản Bot Này Đội Ngũ Phát Triển Rất Vui Vì Điều Đó** ❤"
+    alive = f"**Xin Chào {message.from_user.mention()}, i'm {BOT_NAME}**\n\n⚡ Trạng Thái Bot Đang Hoạt Động\n🍀 Người Sáng Lập: [{ALIVE_NAME}](https://t.me/{OWNER_NAME})\n✨ Phiên Bản Bot: `v{__version__}`\n🍀 Pyrogram Phiên Bản: `{pyrover}`\n✨ Python Phiên Bản: `{__python_version__}`\n🍀 PyTgCalls Phiên Bản: `{pytover.__version__}`\n✨ Thời Gian Bot Hoạt Động: `{uptime}`\n\n**Cảm Ơn Bạn Đã Sử Dụng Phiên Bản Bot Này Đội Ngũ Phát Triển Rất Vui Vì Điều Đó** ❤"
 
     await message.reply_photo(
         photo=f"{ALIVE_IMG}",
