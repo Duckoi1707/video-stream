@@ -123,13 +123,13 @@ async def ping_pong(client: Client, message: Message):
     await m_reply.edit_text("🏓 `Tốc Độ Mạng Đo Được!!`\n" f"⚡️ `{delta_ping * 100:.3f} ms`")
 
 
-@Client.on_message(command(["uptime", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
+@Client.on_message(command(["thoigian", f"thoigian@{BOT_USERNAME}"]) & ~filters.edited)
 async def get_uptime(client: Client, message: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
     await message.reply_text(
-        "🤖 bot status:\n"
-        f"• **uptime:** `{uptime}`\n"
-        f"• **start time:** `{START_TIME_ISO}`"
+        "🤖 Trạng Thái Hoạt Động:\n"
+        f"• **Thời Gian Hoạt Động:** `{uptime}`\n"
+        f"• **Thời Gian Khởi Chạy Hoạt Động:** `{START_TIME_ISO}`"
     )
