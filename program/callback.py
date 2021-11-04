@@ -25,21 +25,21 @@ async def cbstart(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
+                        "➕ Thêm tôi vào Nhóm của bạn ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("❓ Basic Guide", callback_data="cbhowtouse")],
+                [InlineKeyboardButton("❓ Hướng dẫn cơ bản", callback_data="cbhowtouse")],
                 [
-                    InlineKeyboardButton("📚 Commands", callback_data="cbcmds"),
-                    InlineKeyboardButton("❤ Donate", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("📚 Lệnh", callback_data="cbcmds"),
+                    InlineKeyboardButton("❤ Quyên tặng", url=f"https://t.me/{OWNER_NAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "👥 Nhóm chính thức", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "📣 Kênh chính thức", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                 
                 ],
@@ -128,8 +128,8 @@ async def cbadmin(_, query: CallbackQuery):
 
 » /pause - pause the stream
 » /resume - resume the stream
-» /skip - switch to next stream
-» /stop - stop the streaming
+» /boqua - switch to next stream
+» /tat - stop the streaming
 » /vmute - mute the userbot on voice chat
 » /vunmute - unmute the userbot on voice chat
 » /reload - reload bot and refresh the admin data
