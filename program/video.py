@@ -56,15 +56,15 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(command(["vplay", f"vplay@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["batv", f"batv@{BOT_USERNAME}"]) & other_filters)
 async def vplay(c: Client, m: Message):
     replied = m.reply_to_message
     chat_id = m.chat.id
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="• Mᴇɴᴜ", callback_data="cbmenu"),
-                InlineKeyboardButton(text="• Cʟᴏsᴇ", callback_data="cls"),
+                InlineKeyboardButton(text="Tùy Chỉnh", callback_data="cbmenu"),
+                InlineKeyboardButton(text="Tạm Đóng", callback_data="cls"),
             ]
         ]
     )
@@ -206,12 +206,12 @@ async def vplay(c: Client, m: Message):
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             await m.reply_photo(
                                 photo=f"{IMG_1}",
-                                caption=f"💡 **Track added to queue »** `{pos}`\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {requester}",
+                                caption=f"💡 **Đã thêm bản nhạc vào hàng đợi »** `{pos}`\n\n🏷 **Tên:** [{songname}]({url})\n💭 **Trò chuyện:** `{chat_id}`\n🎧 **Yêu cầu bởi:** {requester}",
                                 reply_markup=keyboard,
                             )
                         else:
                             try:
-                                await loser.edit("🔄 **Joining vc...**")
+                                await loser.edit("🔄 **Tham gia ...**")
                                 await call_py.join_group_call(
                                     chat_id,
                                     AudioVideoPiped(
@@ -226,7 +226,7 @@ async def vplay(c: Client, m: Message):
                                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 await m.reply_photo(
                                     photo=f"{IMG_2}",
-                                    caption=f"💡 **Video streaming started.**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}",
+                                    caption=f"💡 **Đã bắt đầu phát trực tuyến video.**\n\n🏷 **Tên:** [{songname}]({url})\n💭 **Trò chuyện:** `{chat_id}`\n💡 **Trạng thái:** `Playing`\n🎧 **Yêu cầu bởi:** {requester}",
                                     reply_markup=keyboard,
                                 )
                             except Exception as ep:
