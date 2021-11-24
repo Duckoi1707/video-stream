@@ -24,7 +24,7 @@ bcl = InlineKeyboardMarkup(
 )
 
 
-@Client.on_message(command(["reload", f"reload@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["tai", f"tai@{BOT_USERNAME}"]) & other_filters)
 @authorized_users_only
 async def update_admin(client, message):
     global admins
@@ -34,7 +34,7 @@ async def update_admin(client, message):
         new_admins.append(u.user.id)
     admins[message.chat.id] = new_admins
     await message.reply_text(
-        "✅ Bot **reloaded correctly !**\n✅ **Admin list** has been **updated !**"
+        "✅ Bot **reloaded correctly !**\n✅ **Danh sách quản trị viên** đã được **cập nhật !**"
     )
 
 
@@ -46,10 +46,10 @@ async def skip(client, m: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="• Mᴇɴᴜ", callback_data="cbmenu"
+                    text="Tùy Chỉnh", callback_data="cbmenu"
                 ),
                 InlineKeyboardButton(
-                    text="• Cʟᴏsᴇ", callback_data="cls"
+                    text="Tạm Đóng", callback_data="cls"
                 ),
             ]
         ]
@@ -67,7 +67,7 @@ async def skip(client, m: Message):
         else:
             await m.reply_photo(
                 photo=f"{IMG_3}",
-                caption=f"⏭ **Skipped to the next track.**\n\n🏷 **Name:** [{op[0]}]({op[1]})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {m.from_user.mention()}",
+                caption=f"⏭ **Đã bỏ qua bài hát tiếp theo.**\n\n🏷 **Tên:** [{op[0]}]({op[1]})\n💭 **Trò chuyện:** `{chat_id}`\n💡 **Trạng thái:** `Playing`\n🎧 **Yêu cầu bởi:** {m.from_user.mention()}",
                 reply_markup=keyboard,
             )
     else:
@@ -89,7 +89,7 @@ async def skip(client, m: Message):
 
 
 @Client.on_message(
-    command(["stop", f"stop@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vstop"])
+    command(["stop", f"stop@{BOT_USERNAME}", "tat", f"tat@{BOT_USERNAME}", "vstop"])
     & other_filters
 )
 @authorized_users_only
@@ -99,11 +99,11 @@ async def stop(client, m: Message):
         try:
             await call_py.leave_group_call(chat_id)
             clear_queue(chat_id)
-            await m.reply("✅ **streaming has ended.**")
+            await m.reply("✅ **phát trực tuyến đã kết thúc.**")
         except Exception as e:
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
-        await m.reply("❌ **nothing in streaming**")
+        await m.reply("❌ **không có gì trong phát trực tuyến**")
 
 
 @Client.on_message(
@@ -288,9 +288,9 @@ async def change_volume(client, m: Message):
         try:
             await call_py.change_volume_call(chat_id, volume=int(range))
             await m.reply(
-                f"✅ **volume set to** `{range}`%"
+                f"✅ **âm lượng được đặt thành** `{range}`%"
             )
         except Exception as e:
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
-        await m.reply("❌ **nothing in streaming**")
+        await m.reply("❌ **không có gì trong phát trực tuyến**")
