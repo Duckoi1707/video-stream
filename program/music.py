@@ -116,7 +116,7 @@ async def play(c: Client, m: Message):
 
     if replied:
         if replied.audio or replied.voice:
-            suhu = await replied.reply("📥 **downloading audio...**")
+            suhu = await replied.reply("📥 **tải xuống âm thanh...**")
             dl = await replied.download()
             link = replied.link
             if replied.audio:
@@ -139,7 +139,7 @@ async def play(c: Client, m: Message):
                 )
             else:
              try:
-                await suhu.edit("🔄 **Joining vc...**")
+                await suhu.edit("🔄 **Tham gia vc...**")
                 await call_py.join_group_call(
                     chat_id,
                     AudioPiped(
@@ -152,7 +152,7 @@ async def play(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
                     photo=f"{IMG_2}",
-                    caption=f"💡 **Music streaming started.**\n\n🏷 **Name:** [{songname}]({link})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}",
+                    caption=f"💡 **Đã bắt đầu phát nhạc trực tuyến.**\n\n🏷 **Name:** [{songname}]({link})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}",
                     reply_markup=keyboard,
                 )
              except Exception as e:
@@ -164,7 +164,7 @@ async def play(c: Client, m: Message):
                     "» reply to an **audio file** or **give something to search.**"
                 )
             else:
-                suhu = await c.send_message(chat_id, "🔎 **Searching...**")
+                suhu = await c.send_message(chat_id, "🔎 **...**")
                 query = m.text.split(None, 1)[1]
                 search = ytsearch(query)
                 if search == 0:
@@ -195,14 +195,14 @@ async def play(c: Client, m: Message):
                                     AudioPiped(
                                         ytlink,
                                     ),
-                                    stream_type=StreamType().local_stream,
+                                    stream_type=StreamType().pulse_stream,
                                 )
                                 add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                                 await suhu.delete()
                                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 await m.reply_photo(
                                     photo=f"{IMG_2}",
-                                    caption=f"💡 **Music streaming started.**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}",
+                                    caption=f"💡 **Đã bắt đầu phát nhạc trực tuyến.**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}",
                                     reply_markup=keyboard,
                                 )
                             except Exception as ep:
@@ -246,14 +246,14 @@ async def play(c: Client, m: Message):
                                 AudioPiped(
                                     ytlink,
                                 ),
-                                stream_type=StreamType().local_stream,
+                                stream_type=StreamType().pulse_stream,
                             )
                             add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                             await suhu.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             await m.reply_photo(
                                 photo=f"{IMG_2}",
-                                caption=f"💡 **Music streaming started.**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}",
+                                caption=f"💡 **Đã bắt đầu phát nhạc trực tuyến.**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}",
                                 reply_markup=keyboard,
                             )
                         except Exception as ep:
@@ -350,7 +350,7 @@ async def stream(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
                     photo=f"{IMG_1}",
-                    caption=f"💡 **Track added to queue »** `{pos}`\n\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {requester}",
+                    caption=f"💡 **Bản nhạc được thêm vào hàng đợi »** `{pos}`\n\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {requester}",
                     reply_markup=keyboard,
                 )
             else:
