@@ -56,7 +56,7 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(command(["batv", f"batv@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["vplay", f"vplay@{BOT_USERNAME}"]) & other_filters)
 async def vplay(c: Client, m: Message):
     replied = m.reply_to_message
     chat_id = m.chat.id
@@ -77,7 +77,7 @@ async def vplay(c: Client, m: Message):
     a = await c.get_chat_member(chat_id, aing.id)
     if a.status != "administrator":
         await m.reply_text(
-            f"💡 To use me, I need to be an **Administrator** with the following **permissions**:\n\n» ❌ __Delete messages__\n» ❌ __Add users__\n» ❌ __Manage video chat__\n\nData is **updated** automatically after you **promote me**"
+            f"💡 Để sử dụng tôi, tôi cần phải là một **Administrator** with the following **permissions**:\n\n» ❌ __Delete messages__\n» ❌ __Add users__\n» ❌ __Manage video chat__\n\nData is **updated** automatically after you **promote me**"
         )
         return
     if not a.can_manage_voice_chats:
@@ -122,7 +122,7 @@ async def vplay(c: Client, m: Message):
 
     if replied:
         if replied.video or replied.document:
-            loser = await replied.reply("📥 **downloading video...**")
+            loser = await replied.reply("📥 **tải xuống video...**")
             dl = await replied.download()
             link = replied.link
             if len(m.command) < 2:
@@ -150,7 +150,7 @@ async def vplay(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
                     photo=f"{IMG_1}",
-                    caption=f"💡 **Track added to queue »** `{pos}`\n\n🏷 **Name:** [{songname}]({link})\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {requester}",
+                    caption=f"💡 **Đã thêm bản nhạc vào danh sách »** `{pos}`\n\n🏷 **Tên:** [{songname}]({link})\n💭 **Trò chuyện:** `{chat_id}`\n🎧 **Yêu cầu bởi:** {requester}",
                     reply_markup=keyboard,
                 )
             else:
@@ -160,7 +160,7 @@ async def vplay(c: Client, m: Message):
                     amaze = MediumQualityVideo()
                 elif Q == 360:
                     amaze = LowQualityVideo()
-                await loser.edit("🔄 **Joining vc...**")
+                await loser.edit("🔄 **Tham gia vc...**")
                 await call_py.join_group_call(
                     chat_id,
                     AudioVideoPiped(
@@ -175,7 +175,7 @@ async def vplay(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
                     photo=f"{IMG_2}",
-                    caption=f"💡 **Video streaming started.**\n\n🏷 **Name:** [{songname}]({link})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}",
+                    caption=f"💡 **Đã bắt đầu phát trực tuyến video.**\n\n🏷 **Tên:** [{songname}]({link})\n💭 **Trò chuyện:** `{chat_id}`\n💡 **Trạng thái:** `Playing`\n🎧 **Yêu cầu bởi:** {requester}",
                     reply_markup=keyboard,
                 )
         else:
@@ -184,7 +184,7 @@ async def vplay(c: Client, m: Message):
                     "» reply to an **video file** or **give something to search.**"
                 )
             else:
-                loser = await c.send_message(chat_id, "🔎 **Searching...**")
+                loser = await c.send_message(chat_id, "🔎 **Đang Tìm Kiếm...**")
                 query = m.text.split(None, 1)[1]
                 search = ytsearch(query)
                 Q = 720
@@ -239,7 +239,7 @@ async def vplay(c: Client, m: Message):
                 "» reply to an **video file** or **give something to search.**"
             )
         else:
-            loser = await c.send_message(chat_id, "🔎 **Searching...**")
+            loser = await c.send_message(chat_id, "🔎 **Đang tìm kiếm...**")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             Q = 720
@@ -261,12 +261,12 @@ async def vplay(c: Client, m: Message):
                         )
                         await m.reply_photo(
                             photo=f"{IMG_1}",
-                            caption=f"💡 **Track added to queue »** `{pos}`\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {requester}",
+                            caption=f"💡 **Đã thêm bản nhạc vào danh sách »** `{pos}`\n\n🏷 **Tên:** [{songname}]({url})\n💭 **Trò chuyện:** `{chat_id}`\n🎧 **Yêu cầu bởi:** {requester}",
                             reply_markup=keyboard,
                         )
                     else:
                         try:
-                            await loser.edit("🔄 **Joining vc...**")
+                            await loser.edit("🔄 **Tham gia vc...**")
                             await call_py.join_group_call(
                                 chat_id,
                                 AudioVideoPiped(
@@ -281,7 +281,7 @@ async def vplay(c: Client, m: Message):
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             await m.reply_photo(
                                 photo=f"{IMG_2}",
-                                caption=f"💡 **Video streaming started.**\n\n🏷 **Name:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}",
+                                caption=f"💡 **Đã bắt đầu phát trực tuyến video.**\n\n🏷 **Tên:** [{songname}]({url})\n💭 **Trò chuyện:** `{chat_id}`\n💡 **Trạng thái:** `Playing`\n🎧 **Yêu cầu bởi:** {requester}",
                                 reply_markup=keyboard,
                             )
                         except Exception as ep:
@@ -392,7 +392,7 @@ async def vstream(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
                     photo=f"{IMG_1}",
-                    caption=f"💡 **Track added to queue »** `{pos}`\n\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {requester}",
+                    caption=f"💡 **Bản nhạc được thêm vào hàng đợi »** `{pos}`\n\n💭 **Trò chuyện:** `{chat_id}`\n🎧 **Yêu cầu bởi:** {requester}",
                     reply_markup=keyboard,
                 )
             else:
@@ -420,7 +420,7 @@ async def vstream(c: Client, m: Message):
                     )
                     await m.reply_photo(
                         photo=f"{IMG_2}",
-                        caption=f"💡 **[Video live]({link}) stream started.**\n\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}",
+                        caption=f"💡 **[Video live]({link})stream started.**\n\n💭 **Trò chuyện:** `{chat_id}`\n💡 **Trạng thái:** `Playing`\n🎧 **Yêu cầu bởi:** {requester}",
                         reply_markup=keyboard,
                     )
                 except Exception as ep:
