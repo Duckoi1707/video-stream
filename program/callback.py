@@ -42,11 +42,8 @@ async def cbstart(_, query: CallbackQuery):
                     InlineKeyboardButton(
                         "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "🌐 Source Code", url="https://github.com/levina-lab/video-stream"
-                    )
+                
+                
                 ],
             ]
         ),
@@ -57,7 +54,7 @@ async def cbstart(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbhowtouse"))
 async def cbguides(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""❓ **Basic Guide for using this bot:**
+        f"""❓ **Hướng dẫn cơ bản để sử dụng bot này:**
 
 1.) **First, add me to your group.**
 2.) **Then, promote me as administrator and give all permissions except Anonymous Admin.**
@@ -88,12 +85,12 @@ async def cbcmds(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("👷🏻 Admin Cmd", callback_data="cbadmin"),
-                    InlineKeyboardButton("🧙🏻 Sudo Cmd", callback_data="cbsudo"),
+                    InlineKeyboardButton("👷🏻 Quản trị viên Cmd", callback_data="cbadmin"),
+                    InlineKeyboardButton("🧙🏻 Thành viên Cmnd", callback_data="cbsudo"),
                 ],[
-                    InlineKeyboardButton("📚 Basic Cmd", callback_data="cbbasic")
+                    InlineKeyboardButton("📚 Căn bản Cmd", callback_data="cbbasic")
                 ],[
-                    InlineKeyboardButton("🔙 Go Back", callback_data="cbstart")
+                    InlineKeyboardButton("🔙 Quay lại", callback_data="cbstart")
                 ],
             ]
         ),
@@ -103,17 +100,17 @@ async def cbcmds(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbbasic"))
 async def cbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""🏮 here is the basic commands:
+        f"""🏮 đây là các lệnh cơ bản:
 
-» /mplay (song name/link) - play music on video chat
-» /stream (query/link) - stream the yt live/radio live music
-» /vplay (video name/link) - play video on video chat
-» /vstream - play live video from yt live/m3u8
+» /play (song name/link) - phát nhạc trên trò chuyện video
+» /stream (query/link) - phát trực tiếp yt live / radio live music
+» /vplay (video name/link) - phát video trên trò chuyện video
+» /vstream - phát video trực tiếp từ yt live / m3u8
 » /playlist - show you the playlist
-» /video (query) - download video from youtube
-» /song (query) - download song from youtube
-» /lyric (query) - scrap the song lyric
-» /search (query) - search a youtube video link
+» /video (query) - tải xuống video từ youtube
+» /song (query) - tải bài hát từ youtube
+» /lyric (query) - bỏ lời bài hát
+» /search (query) - tìm kiếm một liên kết video youtube
 
 » /ping - show the bot ping status
 » /uptime - show the bot uptime status
@@ -121,7 +118,7 @@ async def cbbasic(_, query: CallbackQuery):
 
 ⚡️ __Powered by {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Go Back", callback_data="cbcmds")]]
+            [[InlineKeyboardButton("🔙 Quay Đầu", callback_data="cbcmds")]]
         ),
     )
 
@@ -134,11 +131,11 @@ async def cbadmin(_, query: CallbackQuery):
 » /pause - pause the stream
 » /resume - resume the stream
 » /skip - switch to next stream
-» /stop - stop the streaming
+» /tat - stop the streaming
 » /vmute - mute the userbot on voice chat
 » /vunmute - unmute the userbot on voice chat
 » /volume `1-200` - adjust the volume of music (userbot must be admin)
-» /reload - reload bot and refresh the admin data
+» /tai - reload bot and refresh the admin data
 » /userbotjoin - invite the userbot to join group
 » /userbotleave - order userbot to leave from group
 
@@ -177,7 +174,7 @@ async def cbmenu(_, query: CallbackQuery):
     chat_id = query.message.chat.id
     if chat_id in QUEUE:
           await query.edit_message_text(
-              f"⚙️ **settings of** {query.message.chat.title}\n\n⏸ : pause stream\n▶️ : resume stream\n🔇 : mute userbot\n🔊 : unmute userbot\n⏹ : stop stream",
+              f"⚙️ **cài đặt of** {query.message.chat.title}\n\n⏸ : tạm dừng luồng\n▶️ : \n🔇 : người dùng tắt tiếng\n🔊 : bật tiếng người dùng\n⏹ : dừng dòng",
               reply_markup=InlineKeyboardMarkup(
                   [[
                       InlineKeyboardButton("⏹", callback_data="cbstop"),
@@ -192,7 +189,7 @@ async def cbmenu(_, query: CallbackQuery):
              ),
          )
     else:
-        await query.answer("❌ nothing is currently streaming", show_alert=True)
+        await query.answer("❌ hiện không có gì đang phát trực tuyến", show_alert=True)
 
 
 @Client.on_callback_query(filters.regex("cls"))
