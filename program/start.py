@@ -57,7 +57,7 @@ async def start_(client: Client, message: Message):
 
 💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
 
-🔖 **To know how to use this bot, please click on the » ❓ Basic Guide button!**
+🔖 **Để biết cách sử dụng bot này, vui lòng nhấp vào » ❓ Hướng dẫn cơ bản!**
 """,
         reply_markup=InlineKeyboardMarkup(
             [
@@ -123,13 +123,13 @@ async def ping_pong(client: Client, message: Message):
     await m_reply.edit_text("🏓 `Ping!!`\n" f"⚡️ `{delta_ping * 100:.3f} ms`")
 
 
-@Client.on_message(command(["uptime", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
+@Client.on_message(command(["time", f"time@{BOT_USERNAME}"]) & ~filters.edited)
 async def get_uptime(client: Client, message: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
     await message.reply_text(
-        "🤖 bot status:\n"
+        "🤖 trạng thái bot:\n"
         f"• **uptime:** `{uptime}`\n"
         f"• **start time:** `{START_TIME_ISO}`"
     )
