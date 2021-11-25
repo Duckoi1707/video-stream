@@ -58,6 +58,7 @@ async def play(c: Client, m: Message):
         [
             [
                 InlineKeyboardButton(text="Tùy Chỉnh", callback_data="cbmenu"),
+                InlineKeyboardButton(text="Lệnh", callback_data="cbbasic"),
                 InlineKeyboardButton(text="Tạm Đóng", callback_data="cls"),
             ]
         ]
