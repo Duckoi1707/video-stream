@@ -122,6 +122,17 @@ async def ping_pong(client: Client, message: Message):
     delta_ping = time() - start
     await m_reply.edit_text("🏓 `Ping!!`\n" f"⚡️ `{delta_ping * 100:.3f} ms`")
 
+    @Client.on_message(command(["tt", f"tt@{BOT_USERNAME}"]) & ~filters.edited)
+
+async def ping_pong(client: Client, message: Message):
+
+    start = time()
+
+    m_reply = await message.reply_text("Đang Tải Thông Tin Về Bot...")
+
+    delta_ping = time() - start
+
+    await m_reply.edit_text("Bot Music Telegram Cập Nhật Lần Cuối Vào 26/11/2021 Phiên Bản Cải Thiện Mở Rộng Bộ Nhớ Lưu Trữ Không Gian - Tăng Độ Thông Minh 200%")
 
 @Client.on_message(command(["time", f"time@{BOT_USERNAME}"]) & ~filters.edited)
 async def get_uptime(client: Client, message: Message):
