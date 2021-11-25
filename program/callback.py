@@ -118,7 +118,7 @@ async def cbbasic(_, query: CallbackQuery):
 
 ⚡️ Bản Quyền bởi {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Quay Đầu", callback_data="cbcmds")]]
+            [[InlineKeyboardButton("🔙 Đóng", callback_data="cls")]]
            
         ),
     )
