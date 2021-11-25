@@ -102,23 +102,24 @@ async def cbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🏮 đây là các lệnh cơ bản:
 
-» /play (song name/link) - phát nhạc trên trò chuyện video
-» /stream (query/link) - phát trực tiếp yt live / radio live music
-» /vplay (video name/link) - phát video trên trò chuyện video
+» /play (tên bài hát/liên kết) - phát nhạc trên trò chuyện video
+» /stream (truy vấn/liên kết) - phát trực tiếp yt live / radio live music
+» /vplay (băng hình tên/liên kết) - phát video trên trò chuyện video
 » /vstream - phát video trực tiếp từ yt live / m3u8
 » /playlist - show you the playlist
-» /video (query) - tải xuống video từ youtube
-» /song (query) - tải bài hát từ youtube
-» /lyric (query) - bỏ lời bài hát
-» /search (query) - tìm kiếm một liên kết video youtube
+» /video (truy vấn) - tải xuống video từ youtube
+» /song (truy vấn) - tải bài hát từ youtube
+» /lyric (truy vấn) - bỏ lời bài hát
+» /search (truy vấn) - tìm kiếm một liên kết video youtube
 
-» /ping - show the bot ping status
-» /uptime - show the bot uptime status
-» /alive - show the bot alive info (in group)
+» /ping - hiển thị trạng thái ping của bot
+» /uptime - hiển thị trạng thái thời gian hoạt động của bot
+» /alive - hiển thị thông tin còn sống của bot (trong nhóm)
 
-⚡️ __Powered by {BOT_NAME} AI__""",
+⚡️ Bản Quyền bởi {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("🔙 Quay Đầu", callback_data="cbcmds")]]
+            [[InlineKeyboardButton("👮 Lệnh Adnin", callback_data="cbadmin")]]
         ),
     )
 
@@ -126,22 +127,22 @@ async def cbbasic(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbadmin"))
 async def cbadmin(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""🏮 here is the admin commands:
+        f"""🏮 đây là lệnh quản trị:
 
-» /pause - pause the stream
-» /resume - resume the stream
-» /skip - switch to next stream
-» /tat - stop the streaming
-» /vmute - mute the userbot on voice chat
-» /vunmute - unmute the userbot on voice chat
-» /volume `1-200` - adjust the volume of music (userbot must be admin)
-» /tai - reload bot and refresh the admin data
-» /userbotjoin - invite the userbot to join group
-» /userbotleave - order userbot to leave from group
+» /pause - tạm dừng luồng 
+» /resume - tiếp tục luồng
+» /skip - chuyển sang luồng tiếp theo
+» /tat - dừng phát trực tuyến
+» /vmute - tắt tiếng userbot trong cuộc trò chuyện thoại
+» /vunmute - bật tiếng người dùng trong cuộc trò chuyện thoại
+» /volume `1-200` - điều chỉnh âm lượng của nhạc (userbot phải là quản trị viê)
+» /tai - tải lại bot và làm mới dât quản trị
+» /userbotjoin - mời userbot tham gia nhóm
+» /userbotleave - ra lệnh cho userbot rời khỏi nhóm
 
-⚡️ __Powered by {BOT_NAME} AI__""",
+⚡️ Bàn Quyền thuộc {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Go Back", callback_data="cbcmds")]]
+            [[InlineKeyboardButton("🔙 Quay lại", callback_data="cbcmds")]]
         ),
     )
 
