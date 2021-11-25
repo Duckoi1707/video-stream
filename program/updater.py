@@ -48,31 +48,6 @@ def updater():
     changelog, tl_chnglog = gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     return bool(changelog)
 
-@Client.on_message(command("duc") & other_filters)
-
-@errors
-
-@authorized_users_only
-
-async def pause(_, message: Message):
-
-    if (
-
-            message.chat.id not in callsmusic.pytgcalls.active_calls
-
-    ) or (
-
-            callsmusic.pytgcalls.active_calls[message.chat.id] == 'paused'
-
-    ):
-
-        await message.reply_text("Bản Quyền BY OGGYVN\nCập Nhật Lần Cuối 25/11!")
-
-    else:
-
-        callsmusic.pytgcalls.pause_stream(message.chat.id)
-
-        await message.reply_text("▶️ Bị tạm dừng!")
 
 @Client.on_message(command(["update", f"update@{BOT_USERNAME}"]) & ~filters.edited)
 @sudo_users_only
