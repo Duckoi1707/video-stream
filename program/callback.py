@@ -86,10 +86,10 @@ async def cbcmds(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton("👷🏻 Quản trị viên Cmd", callback_data="cbadmin"),
-                    InlineKeyboardButton("🧙🏻 Thành viên Cmnd", callback_data="cbsudo"),
+                    InlineKeyboardButton("🧙🏻 Thành viên Cmnd", callback_data="cboo"),
                 ],[
-                    InlineKeyboardButton("👮Lệnh Việt Hoá", callback_data="cbtt"),
-                    InlineKeyboardButton("📚 Căn bản Cmd", callback_data="cbbasic"),
+                    
+                    InlineKeyboardButton("📚 Căn bản Cmd", callback_data="cbbasic")
                 ],[
                     InlineKeyboardButton("🔙 Quay lại", callback_data="cbstart")
                 ],
@@ -147,12 +147,12 @@ async def cbadmin(_, query: CallbackQuery):
         ),
     )
 
-@Client.on_callback_query(filters.regex("cbsudo"))
+@Client.on_callback_query(filters.regex("cboo"))
 async def cbsudo(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🏮 đây là các lệnh sudo:
 
-» /rmw - làm sạch tất cả các tệp thô
+» /rmw - làm sạch tất cả các tệp
 » /rmd - dọn dẹp tất cả các tệp đã tải xuống
 » /sysinfo - hiển thị thông tin hệ thống
 » /update - cập nhật bot của bạn lên phiên bản mới nhất
