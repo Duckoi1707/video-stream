@@ -207,7 +207,7 @@ async def cbtt(_, query: CallbackQuery):
 
 ⚡ Bản Quyền Bởi {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Quay lại", callback_data="cbmenu")]]
+            [[InlineKeyboardButton("🔙 Quay lại", callback_data="cls")]]
         ),
     )
 
