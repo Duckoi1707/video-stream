@@ -86,7 +86,7 @@ async def cbcmds(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton("👷🏻 Quản trị viên Cmd", callback_data="cbadmin"),
-                    InlineKeyboardButton("🧙🏻 Thành viên Cmnd", callback_data="cboo"),
+                    InlineKeyboardButton("🧙🏻 Thành viên Cmnd", callback_data="cbsudo"),
                 ],[
                     
                     InlineKeyboardButton("📚 Căn bản Cmd", callback_data="cbbasic")
@@ -147,7 +147,7 @@ async def cbadmin(_, query: CallbackQuery):
         ),
     )
 
-@Client.on_callback_query(filters.regex("cboo"))
+@Client.on_callback_query(filters.regex("cbsudo"))
 async def cbsudo(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🏮 đây là các lệnh sudo:
@@ -193,7 +193,7 @@ async def cbmenu(_, query: CallbackQuery):
         await query.answer("❌ hiện không có gì đang phát trực tuyến", show_alert=True)
 
 @Client.on_callback_query(filters.regex("cbtt"))
-async def cbsudo(_, query: CallbackQuery):
+async def cbtt(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🏮 Các Lệnh Cơ Bản Bot:
 
