@@ -103,9 +103,9 @@ async def cbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🏮 đây là các lệnh cơ bản:
 
-» /play (tên bài hát/liên kết) - phát nhạc trên trò chuyện video
+» /phat (tên bài hát/liên kết) - phát nhạc trên trò chuyện video
 » /stream (truy vấn/liên kết) - phát trực tiếp yt live / radio live music
-» /vplay (băng hình tên/liên kết) - phát video trên trò chuyện video
+» /phatv (băng hình tên/liên kết) - phát video trên trò chuyện video
 » /vstream - phát video trực tiếp từ yt live / m3u8
 » /playlist - show you the playlist
 » /video (truy vấn) - tải xuống video từ youtube
@@ -115,7 +115,7 @@ async def cbbasic(_, query: CallbackQuery):
 
 » /ping - hiển thị trạng thái ping của bot
 » /uptime - hiển thị trạng thái thời gian hoạt động của bot
-» /alive - hiển thị thông tin còn sống của bot (trong nhóm)
+» /thongtin - hiển thị thông tin còn sống của bot (trong nhóm)
 
 ⚡️ Bản Quyền bởi {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
@@ -197,8 +197,8 @@ async def cbtt(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🏮 Các Lệnh Cơ Bản Bot:
 
-» /play - Phát nhạc trực tuyến youtube
-» /vplay - Phát nhạc kèm video youtube
+» /phat - Phát nhạc trực tuyến youtube
+» /phatv - Phát nhạc kèm video youtube
 » /skip - Bỏ qua bài hát đang phát
 » /tai - Để làm mới bot tránh lag 
 » /taiv - Để tải video youtube
