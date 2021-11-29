@@ -24,7 +24,7 @@ bcl = InlineKeyboardMarkup(
 )
 
 
-@Client.on_message(command(["tai", f"tai@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["tai", f"tai@{BOT_USERNAME}", "reload", f"reload@{BOT_USERNAME}"]) & other_filters)
 @authorized_users_only
 async def update_admin(client, message):
     global admins
@@ -34,11 +34,11 @@ async def update_admin(client, message):
         new_admins.append(u.user.id)
     admins[message.chat.id] = new_admins
     await message.reply_text(
-        "✅ Bot **reloaded correctly !**\n✅ **Danh sách quản trị viên** đã được **cập nhật !**"
+        "✅ Bot **tải lại một cách chính xác !**\n✅ **Danh sách quản trị viên** đã được **cập nhật !**"
     )
 
 
-@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "vskip"]) & other_filters)
+@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "boqua", f"boqua@{BOT_USERNAME}", "vskip"]) & other_filters)
 @authorized_users_only
 async def skip(client, m: Message):
 
@@ -59,11 +59,11 @@ async def skip(client, m: Message):
     if len(m.command) < 2:
         op = await skip_current_song(chat_id)
         if op == 0:
-            await m.reply("❌ nothing is currently playing")
+            await m.reply("❌ không có gì hiện đang chơi")
         elif op == 1:
-            await m.reply("✅ __Queues__ **is empty.**\n\n**• userbot leaving voice chat**")
+            await m.reply("✅ __Queues__ **trống rỗng.**\n\n**• userbot rời khỏi cuộc trò chuyện thoại**")
         elif op == 2:
-            await m.reply("🗑️ **Clearing the Queues**\n\n**• userbot leaving voice chat**")
+            await m.reply("🗑️ **Xóa hàng đợi**\n\n**• userbot đã chuyển tới bài tiếp theo**")
         else:
             await m.reply_photo(
                 photo=f"{IMG_3}",
@@ -72,7 +72,7 @@ async def skip(client, m: Message):
             )
     else:
         skip = m.text.split(None, 1)[1]
-        OP = "🗑 **removed song from queue:**"
+        OP = "🗑 **bài hát bị xóa khỏi hàng đợi:**"
         if chat_id in QUEUE:
             items = [int(x) for x in skip.split(" ") if x.isdigit()]
             items.sort(reverse=True)
@@ -101,13 +101,13 @@ async def stop(client, m: Message):
             clear_queue(chat_id)
             await m.reply("✅ **phát trực tuyến đã kết thúc.**")
         except Exception as e:
-            await m.reply(f"🚫 **error:**\n\n`{e}`")
+            await m.reply(f"🚫 **lỗi:**\n\n`{e}`")
     else:
         await m.reply("❌ **không có gì trong phát trực tuyến**")
 
 
 @Client.on_message(
-    command(["pause", f"pause@{BOT_USERNAME}", "vpause"]) & other_filters
+    command(["pause", f"pause@{BOT_USERNAME}", "tamdung", f"tamdumg@{BOT_USERNAME}", "vpause"]) & other_filters
 )
 @authorized_users_only
 async def pause(client, m: Message):
@@ -116,16 +116,16 @@ async def pause(client, m: Message):
         try:
             await call_py.pause_stream(chat_id)
             await m.reply(
-                "⏸ **Track paused.**\n\n• **To resume the stream, use the**\n» /resume command."
+                "⏸ **Theo dõi bị tạm dừng.**\n\n• **Để tiếp tục luồng, hãy sử dụng**\n» /resume chỉ huy."
             )
         except Exception as e:
-            await m.reply(f"🚫 **error:**\n\n`{e}`")
+            await m.reply(f"🚫 **lỗi:**\n\n`{e}`")
     else:
-        await m.reply("❌ **nothing in streaming**")
+        await m.reply("❌ **không có gì trong phát trực tuyến**")
 
 
 @Client.on_message(
-    command(["resume", f"resume@{BOT_USERNAME}", "vresume"]) & other_filters
+    command(["resume", f"resume@{BOT_USERNAME}", "tieptuc", f"tieptuc@{BOT_USERNAME}", "vresume"]) & other_filters
 )
 @authorized_users_only
 async def resume(client, m: Message):
@@ -134,12 +134,12 @@ async def resume(client, m: Message):
         try:
             await call_py.resume_stream(chat_id)
             await m.reply(
-                "▶️ **Track resumed.**\n\n• **To pause the stream, use the**\n» /pause command."
+                "▶️ **Đã tiếp tục theo dõi.**\n\n• **Để tạm dừng luồng, hãy sử dụng**\n» /pause chỉ huy."
             )
         except Exception as e:
-            await m.reply(f"🚫 **error:**\n\n`{e}`")
+            await m.reply(f"🚫 **lỗi:**\n\n`{e}`")
     else:
-        await m.reply("❌ **nothing in streaming**")
+        await m.reply("❌ **không có gì trong phát trực tuyến**")
 
 
 @Client.on_message(
@@ -152,12 +152,12 @@ async def mute(client, m: Message):
         try:
             await call_py.mute_stream(chat_id)
             await m.reply(
-                "🔇 **Userbot muted.**\n\n• **To unmute the userbot, use the**\n» /unmute command."
+                "🔇 **Userbot bị tắt tiếng.**\n\n• **Để bật tiếng người dùng, hãy sử dụng**\n» /unmute chỉ huy."
             )
         except Exception as e:
-            await m.reply(f"🚫 **error:**\n\n`{e}`")
+            await m.reply(f"🚫 **lỗi:**\n\n`{e}`")
     else:
-        await m.reply("❌ **nothing in streaming**")
+        await m.reply("❌ **không có gì trong phát trực tuyến**")
 
 
 @Client.on_message(
@@ -170,12 +170,12 @@ async def unmute(client, m: Message):
         try:
             await call_py.unmute_stream(chat_id)
             await m.reply(
-                "🔊 **Userbot unmuted.**\n\n• **To mute the userbot, use the**\n» /mute command."
+                "🔊 **Người dùng đã bật tiếng.**\n\n• **Nếu .muốn tắt  tiếng người dùng, hãy sử dụng**\n» /mute command."
             )
         except Exception as e:
-            await m.reply(f"🚫 **error:**\n\n`{e}`")
+            await m.reply(f"🚫 **lỗi:**\n\n`{e}`")
     else:
-        await m.reply("❌ **nothing in streaming**")
+        await m.reply("❌ **không có gì trong phát trực tuyến**")
 
 
 @Client.on_callback_query(filters.regex("cbpause"))
