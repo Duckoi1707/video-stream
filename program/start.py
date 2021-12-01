@@ -125,7 +125,7 @@ async def ping_pong(client: Client, message: Message):
     @Client.on_message(
     command(["lenh", f"lenh@{BOT_USERNAME}"]) & filters.group & ~filters.edited
 )
-async def alive(client: Client, message: Message):
+async def lenh(client: Client, message: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
