@@ -39,7 +39,7 @@ async def update_admin(client, message):
 
 
 @Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "boqua", f"boqua@{BOT_USERNAME}", "vskip"]) & other_filters)
-@authorized_users_only
+
 async def skip(client, m: Message):
 
     keyboard = InlineKeyboardMarkup(
