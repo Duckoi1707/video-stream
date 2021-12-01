@@ -39,7 +39,7 @@ async def update_admin(client, message):
 
 
 @Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "boqua", f"boqua@{BOT_USERNAME}", "vskip"]) & other_filters)
-
+@authorized_users_only
 async def skip(client, m: Message):
 
     keyboard = InlineKeyboardMarkup(
@@ -92,7 +92,7 @@ async def skip(client, m: Message):
     command(["stop", f"stop@{BOT_USERNAME}", "tat", f"tat@{BOT_USERNAME}", "vstop"])
     & other_filters
 )
-@authorized_users_only
+Uauthorized_users_only
 async def stop(client, m: Message):
     chat_id = m.chat.id
     if chat_id in QUEUE:
