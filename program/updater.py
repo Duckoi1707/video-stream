@@ -64,7 +64,7 @@ async def update_repo(_, message: Message):
         system("git pull -f && pip3 install -r requirements.txt")
         execle(sys.executable, sys.executable, "main.py", environ)
         return
-    await msg.edit("bot is **up-to-date** with [main](https://github.com/Duckoi1707/video-stream/tree/patch-6)", disable_web_page_preview=True)
+    await msg.edit("bot là **cập nhật** with [Tệp](https://github.com/Duckoi1707/video-stream/tree/patch-6)", disable_web_page_preview=True)
 
 
 @Client.on_message(command(["restart", f"restart@{BOT_USERNAME}"]) & ~filters.edited)
