@@ -54,7 +54,7 @@ def updater():
 
 
 @Client.on_message(command(["update", f"update@{BOT_USERNAME}"]) & ~filters.edited)
-
+@authorized_users_only
 async def update_repo(_, message: Message):
     chat_id = message.chat.id
     msg = await message.reply("🔄 `xử lý cập nhật...`")
@@ -68,7 +68,7 @@ async def update_repo(_, message: Message):
 
 
 @Client.on_message(command(["restart", f"restart@{BOT_USERNAME}"]) & ~filters.edited)
-
+@authorized_users_only
 async def restart_bot(_, message: Message):
     msg = await message.reply("`khởi động lại người máy...`")
     args = [sys.executable, "main.py"]
